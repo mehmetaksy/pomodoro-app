@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ba4949;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+.app {
+  width: 480px;
+  text-align: center;
+}
+
+.app h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.mode-buttons button {
+  background: rgba(0,0,0,0.15);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mode-buttons button.active {
+  background: rgba(0,0,0,0.3);
+}
+
+.timer-box {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+.timer-display {
+  font-size: 100px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.start-btn {
+  background: white;
+  color: #ba4949;
+  border: none;
+  padding: 16px 60px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 4px;
+  margin-right: 10px;
+}
+
+.reset-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 16px;
+}
