@@ -1,3 +1,4 @@
+import TaskList from './TaskList'
 import './App.css'
 import { useState, useEffect } from 'react'
 
@@ -21,6 +22,7 @@ function App() {
     if (!isRunning) return
     if (timeLeft === 0) {
       setIsRunning(false)
+      new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg').play()
       return
     }
     const timer = setInterval(() => {
@@ -61,6 +63,7 @@ function App() {
       {isRunning ? 'PAUSE' : 'START'}
     </button>
     <button className="reset-btn" onClick={() => { setTimeLeft(MODES[mode]); setIsRunning(false) }}>↺</button>
+  <TaskList />
   </div>
 )
   
