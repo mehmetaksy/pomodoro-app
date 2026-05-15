@@ -1,20 +1,40 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { supabase } from './supabase'
 
-function TaskList() {
+function TaskList({ user }) {
   const [tasks, setTasks] = useState([])
   const [input, setInput] = useState('')
 
-  const addTask = () => {
+  useEffect(() => {
+    fetchTasks()
+  }, [])
+
+  const fetchTasks = async () => {
+    const { data } = await supabase
+      .from('tasks')
+      .select('*')
+      .order('created_at', { ascending: true })
+    if (data) setTasks(data)
+  }
+
+  const addTask = async () => {
     if (!input.trim()) return
-    setTasks([...tasks, { id: Date.now(), text: input, done: false }])
+    const { data } = await supabase
+      .from('tasks')
+      .insert({ text: input, user_id: user.id })
+      .select()
+      .single()
+    if (data) setTasks([...tasks, data])
     setInput('')
   }
 
-  const toggleTask = (id) => {
-    setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t))
+  const toggleTask = async (id, done) => {
+    await supabase.from('tasks').update({ done: !done }).eq('id', id)
+    setTasks(tasks.map(t => t.id === id ? { ...t, done: !done } : t))
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await supabase.from('tasks').delete().eq('id', id)
     setTasks(tasks.filter(t => t.id !== id))
   }
 
@@ -34,7 +54,7 @@ function TaskList() {
       <ul>
         {tasks.map(task => (
           <li key={task.id} className={task.done ? 'done' : ''}>
-            <span onClick={() => toggleTask(task.id)}>{task.text}</span>
+            <span onClick={() => toggleTask(task.id, task.done)}>{task.text}</span>
             <button onClick={() => deleteTask(task.id)}>✕</button>
           </li>
         ))}

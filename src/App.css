@@ -153,3 +153,91 @@ body {
   opacity: 0.6;
   font-size: 16px;
 }
+
+/* Auth */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.auth-box {
+  background: rgba(255,255,255,0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 300px;
+}
+
+.auth-box h2 {
+  color: white;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.auth-box input {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+
+.auth-btn {
+  padding: 0.7rem;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.auth-error { color: #ffcccc; font-size: 0.85rem; margin: 0; }
+.auth-message { color: #ccffcc; font-size: 0.85rem; margin: 0; }
+
+.auth-toggle {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0;
+}
+
+.auth-toggle span {
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* App header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.signout-btn {
+  position: absolute;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.signout-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
